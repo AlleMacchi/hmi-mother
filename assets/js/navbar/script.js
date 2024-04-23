@@ -24,12 +24,16 @@ document.getElementById("btn_section3").addEventListener("click", function() {
     scrollToSection("section3");
 });
 
-// document.getElementById("btn_section4").addEventListener("click", function() {
-//     scrollToSection("section4");
-// });
+document.getElementById("btn_section4").addEventListener("click", function() {
+    scrollToSection("section4");
+});
 
 document.getElementById("btn_section5").addEventListener("click", function() {
     scrollToSection("section5");
+});
+
+document.getElementById("logButton").addEventListener("click", function() {
+    scrollToSection("section6");
 });
 
 

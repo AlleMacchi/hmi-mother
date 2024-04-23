@@ -57,7 +57,7 @@ document.getElementById("section2").innerHTML = `
   </div>
 
 
-<div class="container-go-position">
+  <div id="commands-section" class="container-go-position">
 
   <div class="container-sector-go container-sector-go-custom">
     
@@ -79,7 +79,8 @@ document.getElementById("section2").innerHTML = `
           Confirm
       </button>          
     </div>
-    <h4>CARRIER SPEED</h4>
+    <h4>CARRIER SET SPEED</h4>
+    <h4 id="CarrierSetSpeed"></h4>
     <div class="form_container">
       <form class="form">
           <input 
@@ -98,7 +99,8 @@ document.getElementById("section2").innerHTML = `
           Confirm
       </button>          
     </div>
-    <h4>LIFTER SPEED</h4>
+    <h4>LIFTER SET SPEED</h4>
+    <h4 id="LifterSetSpeed"></h4>
   </div>
   
 
@@ -140,7 +142,7 @@ document.getElementById("section2").innerHTML = `
           </button>                 
       </div>
       <br>
-      <div id="set-logial-position"></div> 
+      <div id="set-logical-position"></div> 
     </div>
 
   </div>

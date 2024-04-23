@@ -144,7 +144,11 @@ $(document).ready(function(){
         // Task Number
         TaskNumber = data.Array_15;
         
-        
+            // Update Selection Physical or Logical
+    SelPhysicalLogical = data.SelPhysicalLogical;
+
+    //Watchdog
+    updateWatchdog();
         
 
 
@@ -152,3 +156,22 @@ $(document).ready(function(){
   )},1500);       
 });
 
+
+function updateWatchdog() {
+  // e.preventDefault();
+  Watchdog = !Watchdog;
+  var url = "IOWriteWatchdog.html";
+  var name = '"HMI_PLC".FromHMI.Watchdog';
+  var val = Watchdog;
+  var sdata = encodeURIComponent(name) + "=" + val;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      // Request finished, do something with the response if needed
+    }
+  };
+  xhr.send(sdata);
+}

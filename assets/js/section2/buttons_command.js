@@ -162,9 +162,9 @@ $(document).ready(function(){
         LogicalPositionStringa = setLogicalString(Row,Col,Dir);
 
         if (Row ==null || Row==0 || Row >38) {
-            $('#set-logial-position').text('');
+            $('#set-logical-position').text('');
         } else {
-            $('#set-logial-position').text(LogicalPositionStringa);
+            $('#set-logical-position').text(LogicalPositionStringa);
         }
 
         if (Row ==0 || Row >38) {
@@ -187,7 +187,7 @@ function onTouchTrueSetLOGICAL(event) {
 
     url="IOWritePositionLogical.html";
     name='"HMI_PLC".FromHMI.Setting.Carrier.PositionToReach_logical';
-    val=$('#set-logial-position').text();
+    val=$('#set-logical-position').text();
     sdata=escape(name)+'='+val;
     $.post(url,sdata,function(result){});
 }
@@ -225,19 +225,14 @@ function onTouchTrueSetCARRIERSPD(event) {
     val=$('input[id=setCarrierSpeed]').val();
     sdata=escape(name)+'='+val;
     $.post(url,sdata,function(result){});
+   
+    if (val<1 || val>10) {
+        alert('Value must be between 1 and 10');
+        document.getElementById("setCarrierSpeed").value = '';
+    }else{ 
+        document.getElementById("CarrierSetSpeed").textContent = `${val}%`;
+    }
 }
-
-
-$(document).ready(function(){
-    $("#setCarrierSpeed").change(function(){
-        var Speed = $('input[id=setCarrierSpeed]').val();
-        
-        if (Speed<0 || Speed>10) {
-            alert('Value must be between 1 and 10');
-        }        
-
-    });
-  });
 
 
 
@@ -249,24 +244,21 @@ document.getElementById("btn-setLifterSpeed").addEventListener("mousedown", onTo
 document.getElementById("btn-setLifterSpeed").addEventListener("touchstart", onTouchTrueSetLIFTERSPD);
 
 
-function onTouchTrueSetLIFTERSPD(event) {
+  function onTouchTrueSetLIFTERSPD(event) {
     url="IOWriteLifterSpeed.html";
     name='"HMI_PLC".FromHMI.Setting.Lifter.Speed';
     val=$('input[id=setLifterSpeed]').val();
     sdata=escape(name)+'='+val;
     $.post(url,sdata,function(result){});
+    
+    if (val<1 || val>100) {
+        alert('Value must be between 1 and 100');
+        document.getElementById("setLifterSpeed").value = '';
+    }else{
+        document.getElementById("LifterSetSpeed").textContent = `${val}%`;
+    }
+
 }
-
-$(document).ready(function(){
-    $("#setLifterSpeed").change(function(){
-        var Speed = $('input[id=setLifterSpeed]').val();
-        
-        if (Speed<0 || Speed>100) {
-            alert('Value must be between 1 and 100');
-        }        
-
-    });
-  });
 
 
   // =========================
