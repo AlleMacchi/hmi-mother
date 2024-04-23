@@ -1,7 +1,13 @@
-$(document).ready(function(){
+$(document).ready(async function () {
   $.ajaxSetup({ cache: false });
+  await readHtml();
+  updateStatusLogicalPhysical();
+  initiateManAutoButton();
+  setInterval(readHtml, 1500);
+});
 
-  setInterval(function() {
+async function readHtml() {
+  return new Promise((resolve, reject) => {
       $.getJSON("IORead_Array.html", function(data){
 
         // Status Machine
@@ -144,18 +150,19 @@ $(document).ready(function(){
         // Task Number
         TaskNumber = data.Array_15;
         
-            // Update Selection Physical or Logical
-    SelPhysicalLogical = data.SelPhysicalLogical;
+        // Update Selection Physical or Logical
+        SelPhysicalLogical = decodedString(data.SelPhysicalLogical);
+        MotherNo = data.AGV_No;
 
-    //Watchdog
-    updateWatchdog();
-        
-
-
-      }
-  )},1500);       
-});
-
+      //Watchdog
+      updateWatchdog();
+      resolve();
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.error("Error fetching data: " + textStatus);
+      reject(errorThrown);
+    });
+  });
+}
 
 function updateWatchdog() {
   // e.preventDefault();
