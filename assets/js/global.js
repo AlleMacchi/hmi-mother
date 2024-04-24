@@ -6,6 +6,8 @@ var ColStoreLogicalPosition;
 
 var MotherNo = 0;
 var Watchdog = 0;
+var MinBatteryLevel = 0;
+var MaxBatteryLevel = 0;
 
 // Global for Read PLC Data
 

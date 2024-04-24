@@ -10,6 +10,7 @@ const userLogin = {
 
 const controls = [
   //sidebars
+  "setting-section",
   "selector-section",
   "joystick-section",
   //homepage
@@ -105,6 +106,9 @@ function configureAccess(username) {
       "setPosition_toStore",
       "btn-copyActPosition",
       "btn-setPositionToStore",
+      //settings
+      "setting-section"
+      
     ],
     supervisor: [
       //positions
@@ -112,7 +116,9 @@ function configureAccess(username) {
       "btn-copyActPosition",
       "btn-setPositionToStore",
       //machine
-      "btn_Charger"
+      "btn_Charger",
+      //settings
+      "setting-section"
     ],
     maintenance: [],
   };
