@@ -65,7 +65,7 @@ function selModeMachine() {
   }
 }
 
-function initiateButton() {
+function initiateManAutoButton() {
   if (StatusMode) {
     document.getElementById("btn_Manual").classList.remove("selected");
     document.getElementById("btn_Automatic").classList.add("selected");
