@@ -153,6 +153,8 @@ async function readHtml() {
         // Update Selection Physical or Logical
         SelPhysicalLogical = decodedString(data.SelPhysicalLogical);
         MotherNo = data.AGV_No;
+        MinBatteryLevel = data.MinBatteryLevel;
+        MaxBatteryLevel = data.MaxBatteryLevel;
 
       //Watchdog
       updateWatchdog();
