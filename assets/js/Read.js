@@ -1,7 +1,13 @@
-$(document).ready(function(){
+$(document).ready(async function () {
   $.ajaxSetup({ cache: false });
+  await readHtml();
+  updateStatusLogicalPhysical();
+  initiateManAutoButton();
+  setInterval(readHtml, 1500);
+});
 
-  setInterval(function() {
+async function readHtml() {
+  return new Promise((resolve, reject) => {
       $.getJSON("IORead_Array.html", function(data){
 
         // Status Machine
@@ -144,11 +150,35 @@ $(document).ready(function(){
         // Task Number
         TaskNumber = data.Array_15;
         
-        
-        
+        // Update Selection Physical or Logical
+        SelPhysicalLogical = decodedString(data.SelPhysicalLogical);
+        MotherNo = data.AGV_No;
 
+      //Watchdog
+      updateWatchdog();
+      resolve();
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.error("Error fetching data: " + textStatus);
+      reject(errorThrown);
+    });
+  });
+}
 
-      }
-  )},1500);       
-});
+function updateWatchdog() {
+  // e.preventDefault();
+  Watchdog = !Watchdog;
+  var url = "IOWriteWatchdog.html";
+  var name = '"HMI_PLC".FromHMI.Watchdog';
+  var val = Watchdog;
+  var sdata = encodeURIComponent(name) + "=" + val;
 
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      // Request finished, do something with the response if needed
+    }
+  };
+  xhr.send(sdata);
+}

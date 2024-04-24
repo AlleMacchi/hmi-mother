@@ -34,9 +34,9 @@ function updateGoToPositionDirection(){
   LogicalPositionStringa = setLogicalString(Row,Col,Dir);
 
   if (Row ==null || Row==0 || Row >38) {
-      $('#set-logial-position').text('');
+      $('#set-logical-position').text('');
   } else {
-      $('#set-logial-position').text(LogicalPositionStringa);
+      $('#set-logical-position').text(LogicalPositionStringa);
   }
 
   if (Row ==0 || Row >38) {

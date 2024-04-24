@@ -4,6 +4,9 @@ var RowStoreLogicalPosition;
 var DirStoreLogicalPosition;
 var ColStoreLogicalPosition;
 
+var MotherNo = 0;
+var Watchdog = 0;
+
 // Global for Read PLC Data
 
 var StatusMachine = 0;
@@ -24,6 +27,7 @@ var PalletStopLeft = false;
 var PalletStopRight = false;
 var PalletLimitLeft= false;
 var PalletLimitRight= false;
+var SelPhysicalLogical= false;
 
 var StatusStep = 0;
 var StatusCarrierActPositon_logicalRow = 0;
