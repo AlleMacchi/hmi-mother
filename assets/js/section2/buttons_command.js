@@ -162,9 +162,9 @@ document
   .addEventListener("touchstart", onTouchTrueSetLOGICAL);
 
 function onTouchTrueSetLOGICAL(event) {
-  var Row = $("input[id=setPositionLogical]").val();
-  var Col = StatusCarrierActPositon_logicalCol;
-  var Dir = "0";
+  let Row = $("input[id=setPositionLogical]").val();
+  let Col = StatusCarrierActPositon_logicalCol;
+  let Dir = "0";
 
   if ($("#setDirLogicalPosition_Section2").text() === "B") {
     Dir = "1";
@@ -178,12 +178,14 @@ function onTouchTrueSetLOGICAL(event) {
     $("#set-logical-position").text("");
   } else {
     LogicalPositionStringa = setLogicalString(Row, Col, Dir);
+    $("#set-logical-position").text(LogicalPositionStringa);
+
     url = "IOWritePositionLogical.html";
     name = '"HMI_PLC".FromHMI.Setting.Carrier.PositionToReach_logical';
     val = $("#set-logical-position").text();
     sdata = escape(name) + "=" + val;
     $.post(url, sdata, function (result) {});
-    $("#set-logical-position").text(LogicalPositionStringa);
+    
   }
 }
 
@@ -222,17 +224,18 @@ document
   .addEventListener("touchstart", onTouchTrueSetCARRIERSPD);
 
 function onTouchTrueSetCARRIERSPD(event) {
-  url = "IOWriteCarrierSpeed.html";
-  name = '"HMI_PLC".FromHMI.Setting.Carrier.Speed';
-  val = $("input[id=setCarrierSpeed]").val();
-  sdata = escape(name) + "=" + val;
-  $.post(url, sdata, function (result) {});
+  let valCheck = $("input[id=setCarrierSpeed]").val();
 
-  if (val < 1 || val > 10) {
+  if (valCheck < 1 || valCheck > 10) {
     alert("Value must be between 1 and 10");
     document.getElementById("setCarrierSpeed").value = "";
   } else {
-    document.getElementById("CarrierSetSpeed").textContent = `${val}%`;
+    document.getElementById("CarrierSetSpeed").textContent = `${valCheck}%`;
+    url = "IOWriteCarrierSpeed.html";
+    name = '"HMI_PLC".FromHMI.Setting.Carrier.Speed';
+    val = $("input[id=setCarrierSpeed]").val();
+    sdata = escape(name) + "=" + val;
+    $.post(url, sdata, function (result) {});
   }
 }
 
@@ -248,17 +251,18 @@ document
   .addEventListener("touchstart", onTouchTrueSetLIFTERSPD);
 
 function onTouchTrueSetLIFTERSPD(event) {
-  url = "IOWriteLifterSpeed.html";
-  name = '"HMI_PLC".FromHMI.Setting.Lifter.Speed';
-  val = $("input[id=setLifterSpeed]").val();
-  sdata = escape(name) + "=" + val;
-  $.post(url, sdata, function (result) {});
+  let valCheck = $("input[id=setLifterSpeed]").val();
 
-  if (val < 1 || val > 100) {
+  if (valCheck < 1 || valCheck > 100) {
     alert("Value must be between 1 and 100");
     document.getElementById("setLifterSpeed").value = "";
   } else {
-    document.getElementById("LifterSetSpeed").textContent = `${val}%`;
+    document.getElementById("LifterSetSpeed").textContent = `${valCheck}%`;
+    url = "IOWriteLifterSpeed.html";
+    name = '"HMI_PLC".FromHMI.Setting.Lifter.Speed';
+    val = $("input[id=setLifterSpeed]").val();
+    sdata = escape(name) + "=" + val;
+    $.post(url, sdata, function (result) {});
   }
 }
 

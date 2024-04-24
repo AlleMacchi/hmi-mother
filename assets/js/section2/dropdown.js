@@ -16,7 +16,7 @@ $("#dropdown-menu_Section2").on("click", ".dropdown-item", function(event) {
   event.preventDefault();
   var value = $(this).attr("data-value");
   $("#setDirLogicalPosition_Section2").text(value); // Update button text with selected value
-  updateGoToPositionDirection();
+ // updateGoToPositionDirection();
 });
 
 
