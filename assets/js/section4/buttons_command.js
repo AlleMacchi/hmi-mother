@@ -19,7 +19,6 @@ function onTouchSetMinBatteryLvlStartCharging(event) {
     document.getElementById("Minimum-level-input").value = "";
   } else {
     $.post(url, sdata, function (result) {});
-    document.getElementById("Minimum-level-input").value = "";
 
     // console.log(url, sdata, val);
     // console.log($.post(url, sdata, function (result) {}));
@@ -47,7 +46,6 @@ function onTouchSetMaxBatteryLvlStopCharging(event) {
     document.getElementById("Maximum-level-input").value = "";
   } else {
     $.post(url, sdata, function (result) {});
-    document.getElementById("Maximum-level-input").value = "";
     // console.log(url, sdata, val);
     // console.log($.post(url, sdata, function (result) {}));
   }
