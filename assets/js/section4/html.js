@@ -7,6 +7,7 @@ document.getElementById("section4").innerHTML = `
   <h4 id="setting-label">Minimum battery level to start charging</h4>
   <h4 id="Minimum-level-value">%</h4>
   <form class="form setting-form">
+
         <input 
             id="Minimum-level-input"
             class="form_input"
@@ -28,6 +29,7 @@ document.getElementById("section4").innerHTML = `
   Maximum battery level to stop charging</h4>
   <h4 id="Maximum-level-value">%</h4>
   <form class="form setting-form">
+
         <input 
             id="Maximum-level-input"
             class="form_input"
